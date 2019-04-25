@@ -35,7 +35,7 @@ class Executive
         */
         void printMenu();
 
-        void printGrid(float** grid);
+        void printGrid(float** grid, int m);
 
         void deleteGrid(float** grid);
 

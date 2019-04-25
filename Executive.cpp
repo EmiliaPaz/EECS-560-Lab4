@@ -18,6 +18,7 @@
 #include <limits>
 #include <stdlib.h>
 #include <time.h>
+#include <iomanip>
 
 ////////////////////////////////////////////////////////////////////////////////
 //////////                    Constructors                            //////////
@@ -293,14 +294,14 @@ void Executive::printMenu()
                 results_dh[2][i-1] = results_dh[2][i-1] / 5;
             }
 
-            std::cout << "\n Open Hashing \n";
-            printGrid(results_o);
+            std::cout << "Open Hashing \n";
+            printGrid(results_o,m);
 
-            std::cout << "\n Quadratic Probing \n";
-            printGrid(results_qp);
+            std::cout << "Quadratic Probing \n";
+            printGrid(results_qp,m);
 
-            std::cout << "\n Double Hashing \n";
-            printGrid(results_dh);
+            std::cout << "Double Hashing \n";
+            printGrid(results_dh,m);
 
 
             // Delete results grids
@@ -315,15 +316,28 @@ void Executive::printMenu()
 }
 
 
-void Executive::printGrid(float** grid)
+void Executive::printGrid(float** grid, int m)
 {
+    for(int y=0; y<6; y++)
+    {
+        if(y==0)
+        {
+            std::cout << left << setw(11) << setfill(' ') << " ";
+        }
+        else
+        {
+            std::cout << left << setw(9) << setfill(' ') << 0.1*m*y ;
+        }
+    }
+    std::cout << "\n";
+
     std::string options[3] = {"Build    ","Found    ","Not found"};
     for(int x=0; x<3; x++)
     {
         std::cout << options[x] << ": ";
         for(int y=0; y<5; y++)
         {
-            std::cout << grid[x][y] << " " ;
+            std::cout << left << setw(9) << setfill(' ') << grid[x][y] ;
         }
         std::cout << "\n";
     }
